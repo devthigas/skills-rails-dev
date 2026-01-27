@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# CLI Manager for Claude Rails Kit
+KIT_DIR="$HOME/.claude/dev-kit"
+REPO_DIR="$HOME/.claude/repo"
+
+command="$1"
+arg="$2"
+
+case $command in
+  "update")
+    echo "Updating Claude Rails Kit..."
+    if [ -d "$REPO_DIR" ]; then
+        cd "$REPO_DIR" && git pull && ./scripts/install.sh
+    else
+        echo "Error: Repository not found. Run install.sh first."
+    fi
+    ;;
+  
+  "list")
+    echo "Available Skills:"
+    find "$KIT_DIR/skills" -name "*.md" | sed "s|$KIT_DIR/skills/||" | sed 's/\.md//'
+    ;;
+    
+  "inspect")
+    if [ -z "$arg" ]; then
+        echo "Usage: claude-kit inspect [skill_name]"
+        exit 1
+    fi
+    cat "$KIT_DIR/skills/$arg.md"
+    ;;
+
+  *)
+    echo "Claude Rails Kit CLI"
+    echo "Usage:"
+    echo "  claude-kit update    - Pull latest changes and reinstall"
+    echo "  claude-kit list      - List available skills"
+    echo "  claude-kit inspect   - View a specific skill file"
+    ;;
+esac
