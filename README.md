@@ -103,6 +103,10 @@ To unlock "X-Ray Vision" for your agents, install these servers:
 5.  **Context 7**
     url: https://context7.com
 
+6.  **Language Server MCP**
+    repo url: https://github.com/isaacphi/mcp-language-server
+    ruby lsp: https://github.com/Shopify/ruby-lsp
+
 ---
 
 ## 🛡 License
