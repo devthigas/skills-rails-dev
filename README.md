@@ -1,4 +1,4 @@
-# Claude Rails Developer Kit
+Rails Developer Kit
 
 A modular, role-based AI coding environment designed for building modern **Ruby on Rails (8.0+)** applications using **Claude Code**.
 
